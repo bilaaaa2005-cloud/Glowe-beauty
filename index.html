@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GLOWÉ BEAUTY — Destinasi skincare & makeup modern dengan sentuhan Soft Luxury Feminine. Temukan perawatan kulit personal Anda melalui Skin Type Finder." />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://placehold.co; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com;" />
+  <title>GLOWÉ BEAUTY — Soft Luxury Skincare &amp; Makeup</title>
+
+  <!-- Google Fonts: Cormorant Garamond (Luxury Editorial Serif) & Plus Jakarta Sans (Modern Clean Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              DEFAULT: '#FDF8F5',
+              soft: '#FAF1EC',
+              card: '#FFFFFF'
+            },
+            blush: {
+              DEFAULT: '#F8E5EA',
+              light: '#FCF2F5',
+              deep: '#F0D0D9'
+            },
+            dusty: {
+              DEFAULT: '#D88A9A',
+              dark: '#C06E80',
+              light: '#E7A8B5'
+            },
+            rosegold: {
+              DEFAULT: '#B76E79',
+              soft: '#C5838E',
+              dark: '#9A5560'
+            },
+            velvet: {
+              DEFAULT: '#3A262B',
+              muted: '#735B61'
+            }
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- =====================================================================
+       [FILE MODULAR: style.css]
+       Saat memisahkan ke multi-file produksi, pindahkan blok <style> ini ke style.css
+       ===================================================================== -->
+  <style>
+    :root {
+      --bg-cream: #FDF8F5;
+      --bg-blush: #F8E5EA;
+      --dusty-rose: #D88A9A;
+      --rose-gold: #B76E79;
+      --velvet-ink: #3A262B;
+    }
+
+    html, body {
+      background-color: var(--bg-cream);
+      color: var(--velvet-ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    /* Custom Scrollbar Soft Luxury */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF1EC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D88A9A;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B76E79;
+    }
+
+    /* Rose Gold Shimmer Gradient */
+    .bg-rosegold-gradient {
+      background: linear-gradient(135deg, #C5838E 0%, #B76E79 55%, #9A5560 100%);
+    }
+    .bg-luxury-hero {
+      background: radial-gradient(circle at 85% 20%, rgba(248, 229, 234, 0.9) 0%, rgba(253, 248, 245, 1) 55%),
+                  linear-gradient(180deg, #FDF8F5 0%, #FAF1EC 100%);
+    }
+
+    /* Soft Glassmorphism */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Drawer & Modal Smooth Transitions */
+    .drawer-backdrop {
+      transition: opacity 0.25s ease;
+    }
+    .drawer-panel {
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Card Hover Micro-interaction */
+    .beauty-card {
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    }
+    .beauty-card:hover {
+      transform: translateY(-4px);
+    }
+    .beauty-card-img {
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .beauty-card:hover .beauty-card-img {
+      transform: scale(1.06);
+    }
+
+    /* Toast Entrance Animation */
+    @keyframes toastPop {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .toast-item {
+      animation: toastPop 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-dusty selection:text-white flex flex-col min-h-screen">
+
+  <!-- ==================== ANNOUNCEMENT BAR ==================== -->
+  <div class="bg-rosegold-gradient text-white text-center py-2 px-4 text-xs sm:text-sm font-medium tracking-wide">
+    <span>Gratis Ongkir ke Seluruh Indonesia untuk Pembelian di Atas Rp 350.000 • Kode Promo: </span>
+    <span class="font-bold underline decoration-white/60">GLOW10</span>
+    <span> (Diskon 10%)</span>
+  </div>
+
+  <!-- ==================== HEADER NAVIGASI RESPONSIF ==================== -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-blush-deep/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-2">
+        <!-- Brand Logo -->
+        <a href="#beranda" class="flex items-center gap-2.5 group focus:outline-none shrink-0">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-rosegold-gradient flex items-center justify-center text-white shadow-sm group-hover:opacity-95 transition-opacity">
+            <!-- Sparkle / Lotus SVG Icon -->
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"></path>
+              <path d="M19 3v4M21 5h-4"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-velvet block leading-none">GLOWÉ</span>
+            <span class="text-[10px] sm:text-[11px] font-semibold tracking-[0.26em] uppercase text-rosegold mt-0.5 block">BEAUTY</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-8" aria-label="Navigasi Utama">
+          <a href="#beranda" class="text-sm font-semibold text-velvet hover:text-rosegold transition-colors py-2">Beranda</a>
+          <a href="#katalog" class="text-sm font-semibold text-velvet hover:text-rosegold transition-colors py-2">Katalog</a>
+          <a href="#skin-finder" class="text-sm font-semibold text-velvet hover:text-rosegold transition-colors py-2 inline-flex items-center gap-1.5">
+            <span>Skin Type Finder</span>
+            <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-blush text-rosegold">Quiz</span>
+          </a>
+          <a href="#tentang" class="text-sm font-semibold text-velvet hover:text-rosegold transition-colors py-2">Tentang</a>
+        </nav>
+
+        <!-- Action Icons (Quick Search, Wishlist, Cart, Mobile Hamburger) -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5">
+          <!-- Quick Search Button -->
+          <button
+            id="btn-quick-search"
+            type="button"
+            aria-label="Pencarian Cepat Produk"
+            class="w-11 h-11 rounded-2xl bg-blush-light hover:bg-blush text-velvet hover:text-rosegold flex items-center justify-center transition-colors border border-blush-deep/50"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <!-- Wishlist Button -->
+          <button
+            id="btn-open-wishlist"
+            type="button"
+            aria-label="Buka Daftar Wishlist"
+            class="relative w-11 h-11 rounded-2xl bg-blush-light hover:bg-blush text-velvet hover:text-rosegold flex items-center justify-center transition-colors border border-blush-deep/50"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span id="wishlist-badge" class="absolute -top-1 -right-1 min-w-[20px] h-[20px] px-1 rounded-full bg-dusty text-white text-[11px] font-bold flex items-center justify-center shadow-xs">0</span>
+          </button>
+
+          <!-- Cart Button -->
+          <button
+            id="btn-open-cart"
+            type="button"
+            aria-label="Buka Keranjang Belanja"
+            class="relative inline-flex items-center gap-2 px-3.5 sm:px-4 h-11 rounded-2xl bg-rosegold-gradient text-white font-semibold text-sm shadow-sm hover:opacity-95 transition-all active:scale-95"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="hidden sm:inline">Tas Belanja</span>
+            <span id="cart-badge" class="min-w-[22px] h-[22px] px-1.5 rounded-full bg-white text-rosegold text-xs font-bold flex items-center justify-center">0</span>
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="btn-open-mobile-nav"
+            type="button"
+            aria-label="Buka Menu Navigasi"
+            aria-expanded="false"
+            class="lg:hidden w-11 h-11 rounded-2xl bg-cream-soft hover:bg-blush text-velvet flex items-center justify-center border border-blush-deep/50"
+          >
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MOBILE NAVIGATION DRAWER ==================== -->
+  <div id="mobile-nav-overlay" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="Menu Navigasi Mobile">
+    <div id="mobile-nav-backdrop" class="fixed inset-0 bg-velvet/45 backdrop-blur-xs drawer-backdrop opacity-0"></div>
+    <div id="mobile-nav-panel" class="fixed inset-y-0 right-0 w-72 max-w-[85vw] bg-cream shadow-2xl p-6 flex flex-col justify-between drawer-panel translate-x-full border-l border-blush-deep">
+      <div>
+        <div class="flex items-center justify-between pb-5 border-b border-blush-deep/60">
+          <span class="font-serif font-bold text-xl text-velvet">GLOWÉ BEAUTY</span>
+          <button id="btn-close-mobile-nav" type="button" aria-label="Tutup Menu" class="w-11 h-11 rounded-2xl bg-blush-light text-velvet hover:bg-dusty hover:text-white flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <nav class="mt-6 flex flex-col gap-2">
+          <a href="#beranda" class="mobile-nav-item px-4 py-3.5 rounded-2xl font-semibold text-velvet hover:bg-blush transition-colors">Beranda</a>
+          <a href="#katalog" class="mobile-nav-item px-4 py-3.5 rounded-2xl font-semibold text-velvet hover:bg-blush transition-colors">Katalog Produk</a>
+          <a href="#skin-finder" class="mobile-nav-item px-4 py-3.5 rounded-2xl font-semibold text-velvet hover:bg-blush transition-colors flex items-center justify-between">
+            <span>Skin Type Finder</span>
+            <span class="px-2.5 py-0.5 text-[10px] font-bold uppercase rounded-full bg-rosegold text-white">Kuis</span>
+          </a>
+          <a href="#tentang" class="mobile-nav-item px-4 py-3.5 rounded-2xl font-semibold text-velvet hover:bg-blush transition-colors">Tentang GLOWÉ</a>
+        </nav>
+      </div>
+      <div class="bg-blush-light rounded-2xl p-4 border border-blush-deep/60">
+        <p class="text-xs font-bold uppercase tracking-wider text-rosegold">Dermatologically Tested</p>
+        <p class="text-xs text-velvet-muted mt-1 leading-relaxed">Formulasi lembut bebas paraben &amp; cruelty-free untuk kilau sehat alami setiap hari.</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- ==================== HERO SECTION SOFT LUXURY ==================== -->
+    <section id="beranda" class="bg-luxury-hero py-12 sm:py-20 lg:py-24 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <!-- Hero Copy -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blush border border-blush-deep text-rosegold text-xs sm:text-sm font-semibold">
+              <span class="w-2 h-2 rounded-full bg-rosegold animate-pulse"></span>
+              <span>Clean Botanical Skincare &amp; Luminous Makeup</span>
+            </div>
+
+            <h1 class="font-serif font-bold text-4xl sm:text-5xl lg:text-[3.5rem] text-velvet leading-[1.12] tracking-tight">
+              Pancarkan Kilau Alami Anda dengan Sentuhan <span class="italic text-rosegold">Soft Luxury.</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-velvet-muted leading-relaxed max-w-xl">
+              Rangkaian perawatan kulit berbahan aktif botanikal dan riasan ringan bernuansa rose-petal yang dirancang khusus untuk merawat skin barrier serta menonjolkan keanggunan alami wanita modern.
+            </p>
+
+            <!-- Dual CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
+              <a href="#katalog" class="inline-flex items-center justify-center gap-2.5 bg-rosegold-gradient text-white font-bold px-7 py-4 rounded-2xl shadow-md hover:shadow-lg hover:opacity-95 transition-all active:scale-95 min-h-[52px]">
+                <span>Belanja Koleksi</span>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#skin-finder" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-blush text-rosegold border-2 border-dusty/50 font-bold px-7 py-4 rounded-2xl transition-all active:scale-95 min-h-[52px]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"></path>
+                </svg>
+                <span>Cek Jenis Kulit</span>
+              </a>
+            </div>
+
+            <!-- Brand Promises -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-blush-deep/70 max-w-lg">
+              <div>
+                <p class="font-serif font-bold text-2xl sm:text-3xl text-rosegold">100%</p>
+                <p class="text-xs text-velvet-muted font-medium">BPOM &amp; Halal Certified</p>
+              </div>
+              <div>
+                <p class="font-serif font-bold text-2xl sm:text-3xl text-rosegold">0%</p>
+                <p class="text-xs text-velvet-muted font-medium">Paraben &amp; SLS</p>
+              </div>
+              <div>
+                <p class="font-serif font-bold text-2xl sm:text-3xl text-rosegold">Cruelty</p>
+                <p class="text-xs text-velvet-muted font-medium">Free &amp; Vegan Friendly</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Aesthetic Visual -->
+          <div class="lg:col-span-6">
+            <div class="relative max-w-lg mx-auto">
+              <!-- Decorative Soft Glow Backdrop -->
+              <div class="absolute -inset-3 rounded-[2.2rem] bg-gradient-to-tr from-blush via-blush-deep/50 to-cream-soft blur-xl opacity-80"></div>
+              <div class="relative rounded-[2rem] bg-white p-3 sm:p-4 shadow-xl border border-blush-deep/60">
+                <div class="relative rounded-[1.5rem] overflow-hidden aspect-[4/4] sm:aspect-[4/3] lg:aspect-[4/4] bg-blush-light">
+                  <img
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80"
+                    alt="Koleksi Skincare dan Makeup Soft Luxury GLOWÉ BEAUTY"
+                    class="w-full h-full object-cover"
+                    onerror="this.src='https://placehold.co/800x800/F8E5EA/B76E79?text=GLOWE+BEAUTY'"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-velvet/55 via-transparent to-transparent"></div>
+                  <!-- Floating Editorial Card -->
+                  <div class="absolute bottom-4 left-4 right-4 glass-panel rounded-2xl p-4 shadow-md border border-white/80">
+                    <div class="flex items-center justify-between gap-3">
+                      <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-rosegold">Signature Bestseller</span>
+                        <p class="font-serif font-bold text-lg text-velvet leading-tight">Rose Quartz Hydrating Serum</p>
+                        <p class="text-xs text-velvet-muted mt-0.5">5x Ceramide + Damask Rose Water untuk kulit kenyal bercahaya</p>
+                      </div>
+                      <a href="#katalog" class="shrink-0 px-4 py-2.5 rounded-xl bg-rosegold-gradient text-white text-xs font-bold hover:opacity-95 transition-opacity">
+                        Lihat
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKIN TYPE FINDER (KUIS INTERAKTIF 3 LANGKAH) ==================== -->
+    <section id="skin-finder" class="py-16 sm:py-20 bg-blush-light border-y border-blush-deep/60">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="inline-block px-3.5 py-1.5 rounded-full bg-blush text-rosegold text-xs font-bold uppercase tracking-wider mb-3">
+            Konsultasi Kulit Virtual
+          </span>
+          <h2 class="font-serif font-bold text-3xl sm:text-4xl text-velvet">
+            Skin Type Finder
+          </h2>
+          <p class="text-sm sm:text-base text-velvet-muted mt-2.5">
+            Jawab 3 pertanyaan singkat untuk mengetahui profil jenis kulit Anda beserta rekomendasi produk GLOWÉ BEAUTY yang paling tepat.
+          </p>
+        </div>
+
+        <!-- Quiz Card Container -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-lg border border-blush-deep/70">
+          <!-- Progress Stepper -->
+          <div id="quiz-progress-header" class="mb-8">
+            <div class="flex items-center justify-between text-xs font-bold text-rosegold mb-2">
+              <span id="quiz-step-label">Langkah 1 dari 3</span>
+              <span id="quiz-step-percent">33%</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-blush overflow-hidden">
+              <div id="quiz-progress-bar" class="h-full bg-rosegold-gradient rounded-full transition-all duration-300" style="width: 33.33%"></div>
+            </div>
+          </div>
+
+          <!-- Quiz Interactive Question Stage -->
+          <div id="quiz-question-stage" class="space-y-6">
+            <h3 id="quiz-question-title" class="font-serif font-bold text-2xl sm:text-3xl text-velvet leading-snug">
+              Bagaimana kondisi kulit wajah Anda saat siang hari?
+            </h3>
+            <div id="quiz-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <!-- Opsi jawaban di-render aman via DOM API -->
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-blush-deep/50">
+              <button
+                id="btn-quiz-prev"
+                type="button"
+                class="hidden px-5 py-3 rounded-2xl bg-cream-soft hover:bg-blush text-velvet text-sm font-semibold transition-colors min-h-[46px]"
+              >
+                &larr; Sebelumnya
+              </button>
+              <div class="ml-auto text-xs text-velvet-muted">
+                Pilih salah satu jawaban di atas untuk melanjutkan
+              </div>
+            </div>
+          </div>
+
+          <!-- Quiz Result Stage -->
+          <div id="quiz-result-stage" class="hidden space-y-6">
+            <div class="bg-blush-light rounded-2xl p-6 border border-blush-deep text-center sm:text-left flex flex-col sm:flex-row items-center gap-5">
+              <div class="w-16 h-16 rounded-2xl bg-rosegold-gradient text-white flex items-center justify-center shrink-0 shadow-md">
+                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 3l1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3z"></path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-rosegold">Hasil Analisis Kulit Anda</span>
+                <h3 id="quiz-result-type" class="font-serif font-bold text-2xl sm:text-3xl text-velvet mt-0.5">Kulit Kering (Dry Skin)</h3>
+                <p id="quiz-result-desc" class="text-sm text-velvet-muted mt-1.5 leading-relaxed"></p>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="font-serif font-bold text-xl text-velvet">Rekomendasi Produk Khusus untuk Anda</h4>
+                <button id="btn-quiz-restart" type="button" class="text-xs font-bold text-rosegold hover:underline py-2 px-3 rounded-xl">
+                  Ulangi Kuis
+                </button>
+              </div>
+              <div id="quiz-recommendations-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Rekomendasi produk hasil kuis di-render via DOM API -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KATALOG PRODUK LENGKAP ==================== -->
+    <section id="katalog" class="py-16 sm:py-24 bg-cream">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Heading -->
+        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <span class="inline-block px-3.5 py-1.5 rounded-full bg-blush text-rosegold text-xs font-bold uppercase tracking-wider mb-3">
+            Curated Beauty Collection
+          </span>
+          <h2 class="font-serif font-bold text-3xl sm:text-4xl text-velvet">
+            Katalog Skincare &amp; Makeup
+          </h2>
+          <p class="text-sm sm:text-base text-velvet-muted mt-2.5">
+            Temukan formula terbaik untuk ritual kecantikan harian Anda. Filter berdasarkan kategori, jenis kulit, atau urutkan harga.
+          </p>
+        </div>
+
+        <!-- Filter & Search Control Panel -->
+        <div class="bg-white rounded-3xl p-4 sm:p-6 shadow-sm border border-blush-deep/60 mb-8 space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-center">
+            <!-- Search Bar Real-Time -->
+            <div class="md:col-span-6 relative">
+              <label for="catalog-search-input" class="sr-only">Cari produk kecantikan</label>
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-rosegold">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <input
+                id="catalog-search-input"
+                type="search"
+                maxlength="60"
+                placeholder="Cari serum, cushion, lip tint, atau kandungan aktif..."
+                class="w-full pl-11 pr-10 py-3 rounded-2xl bg-cream border border-blush-deep text-sm text-velvet placeholder:text-velvet-muted/70 focus:outline-none focus:ring-2 focus:ring-dusty min-h-[48px]"
+              />
+              <button
+                id="btn-clear-search"
+                type="button"
+                aria-label="Hapus kata kunci pencarian"
+                class="hidden absolute inset-y-0 right-0 pr-3.5 items-center text-velvet-muted hover:text-rosegold"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Filter Jenis Kulit -->
+            <div class="md:col-span-3">
+              <label for="filter-skin-select" class="sr-only">Filter Jenis Kulit</label>
+              <select
+                id="filter-skin-select"
+                class="w-full px-4 py-3 rounded-2xl bg-cream border border-blush-deep text-sm font-medium text-velvet focus:outline-none focus:ring-2 focus:ring-dusty min-h-[48px] cursor-pointer"
+              >
+                <option value="Semua Kulit">Semua Jenis Kulit</option>
+                <option value="Kering">Kulit Kering</option>
+                <option value="Berminyak">Kulit Berminyak</option>
+                <option value="Kombinasi">Kulit Kombinasi</option>
+                <option value="Sensitif">Kulit Sensitif</option>
+              </select>
+            </div>
+
+            <!-- Urutan Harga -->
+            <div class="md:col-span-3">
+              <label for="sort-price-select" class="sr-only">Urutkan Produk</label>
+              <select
+                id="sort-price-select"
+                class="w-full px-4 py-3 rounded-2xl bg-cream border border-blush-deep text-sm font-medium text-velvet focus:outline-none focus:ring-2 focus:ring-dusty min-h-[48px] cursor-pointer"
+              >
+                <option value="featured">Urutan: Unggulan</option>
+                <option value="price-asc">Harga: Terendah ke Tertinggi</option>
+                <option value="price-desc">Harga: Tertinggi ke Terendah</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Category Filter Tabs & Count -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-blush-deep/50">
+            <div class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter Kategori Produk">
+              <button type="button" data-cat="Semua" class="cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-rosegold-gradient text-white shadow-xs transition-all min-h-[42px]">
+                Semua Produk
+              </button>
+              <button type="button" data-cat="Skincare" class="cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream-soft text-velvet hover:bg-blush transition-all min-h-[42px]">
+                Skincare
+              </button>
+              <button type="button" data-cat="Makeup" class="cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream-soft text-velvet hover:bg-blush transition-all min-h-[42px]">
+                Makeup
+              </button>
+            </div>
+
+            <p id="catalog-result-count" class="text-xs sm:text-sm font-medium text-velvet-muted">
+              Menampilkan 8 produk
+            </p>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Kartu produk di-render aman via DOM API di app.js -->
+        </div>
+
+        <!-- Empty Catalog State -->
+        <div id="catalog-empty-state" class="hidden text-center py-16 px-6 bg-white rounded-3xl border border-blush-deep/60">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-blush text-rosegold flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-2xl text-velvet">Produk Tidak Ditemukan</h3>
+          <p class="text-sm text-velvet-muted mt-1.5 max-w-md mx-auto">
+            Tidak ada produk kecantikan yang sesuai dengan kombinasi pencarian atau filter jenis kulit Anda.
+          </p>
+          <button id="btn-reset-catalog" type="button" class="mt-5 px-6 py-3 rounded-2xl bg-rosegold-gradient text-white text-sm font-bold hover:opacity-95 transition-opacity min-h-[46px]">
+            Reset Semua Filter
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TENTANG GLOWÉ BEAUTY ==================== -->
+    <section id="tentang" class="py-16 sm:py-20 bg-cream-soft border-t border-blush-deep/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl overflow-hidden shadow-lg border-4 border-white aspect-[4/3] bg-blush">
+              <img
+                src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80"
+                alt="Filosofi Soft Luxury GLOWÉ BEAUTY"
+                class="w-full h-full object-cover"
+                onerror="this.src='https://placehold.co/800x600/F8E5EA/B76E79?text=GLOWE+Philosophy'"
+              />
+            </div>
+          </div>
+          <div class="lg:col-span-7 space-y-5">
+            <span class="inline-block px-3.5 py-1.5 rounded-full bg-blush text-rosegold text-xs font-bold uppercase tracking-wider">
+              Tentang GLOWÉ BEAUTY
+            </span>
+            <h2 class="font-serif font-bold text-3xl sm:text-4xl text-velvet leading-tight">
+              Keindahan yang Lembut, Teruji Klinis, dan Penuh Cinta untuk Kulit Anda
+            </h2>
+            <p class="text-sm sm:text-base text-velvet-muted leading-relaxed">
+              <strong>GLOWÉ BEAUTY</strong> percaya bahwa merawat diri adalah ritual mewah yang menenangkan. Setiap formula kami memadukan bahan aktif klinis teruji seperti <em>5x Ceramide, Niacinamide,</em> dan <em>Centella Asiatica</em> dengan ekstrak kelopak mawar alami yang lembut bahkan untuk kulit sensitif sekalipun.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="bg-white rounded-2xl p-4 border border-blush-deep/60">
+                <h3 class="font-serif font-bold text-lg text-rosegold">Skin Barrier First</h3>
+                <p class="text-xs text-velvet-muted mt-1 leading-relaxed">pH seimbang (5.0–5.5) untuk menjaga kelembapan alami kulit sepanjang hari.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-4 border border-blush-deep/60">
+                <h3 class="font-serif font-bold text-lg text-rosegold">Breathable Makeup</h3>
+                <p class="text-xs text-velvet-muted mt-1 leading-relaxed">Riasan ringan non-comedogenic yang menyatu mulus tanpa menyumbat pori.</p>
+              </div>
+              <div class="bg-white rounded-2xl p-4 border border-blush-deep/60">
+                <h3 class="font-serif font-bold text-lg text-rosegold">Eco-Conscious</h3>
+                <p class="text-xs text-velvet-muted mt-1 leading-relaxed">Kemasan kaca daur ulang dengan tinta kedelai ramah lingkungan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-velvet text-cream/85 py-12 border-t border-rosegold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/10">
+        <div>
+          <span class="font-serif font-bold text-2xl tracking-wider text-white block">GLOWÉ BEAUTY</span>
+          <p class="text-xs sm:text-sm text-cream/70 mt-3 leading-relaxed">
+            Destinasi kecantikan modern bergaya Soft Luxury Feminine. Menghadirkan perawatan kulit dan makeup berkualitas tinggi untuk kilau sehat Anda.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-widest text-dusty-light mb-3">Navigasi</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#beranda" class="hover:text-dusty-light transition-colors">Beranda</a></li>
+            <li><a href="#katalog" class="hover:text-dusty-light transition-colors">Katalog Produk</a></li>
+            <li><a href="#skin-finder" class="hover:text-dusty-light transition-colors">Skin Type Finder</a></li>
+            <li><a href="#tentang" class="hover:text-dusty-light transition-colors">Tentang Kami</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-widest text-dusty-light mb-3">Layanan Pelanggan</h4>
+          <p class="text-xs sm:text-sm text-cream/70 leading-relaxed">
+            Senin – Minggu: 09.00 – 21.00 WIB<br />
+            Pengiriman Sameday &amp; Reguler ke seluruh Indonesia.<br />
+            Gunakan kode <strong class="text-white">GLOW10</strong> saat checkout.
+          </p>
+        </div>
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/60">
+        <p>&copy; <span id="footer-year">2026</span> GLOWÉ BEAUTY Indonesia. Seluruh Hak Cipta Dilindungi.</p>
+        <p>Soft Luxury Experience • Keamanan Web Terlindungi</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL DETAIL PRODUK ==================== -->
+  <div id="product-detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
+    <div id="detail-modal-backdrop" class="fixed inset-0 bg-velvet/55 backdrop-blur-xs"></div>
+    <div class="relative z-10 w-full max-w-2xl bg-cream rounded-3xl shadow-2xl border border-blush-deep overflow-hidden max-h-[90vh] flex flex-col">
+      <!-- Top Bar -->
+      <div class="flex items-center justify-between px-6 py-4 bg-white border-b border-blush-deep/60">
+        <div class="flex items-center gap-2">
+          <span id="detail-modal-category" class="px-3 py-1 rounded-full bg-blush text-rosegold text-xs font-bold">Skincare</span>
+          <span id="detail-modal-skin" class="px-3 py-1 rounded-full bg-cream-soft text-velvet-muted text-xs font-semibold border border-blush-deep">Semua Kulit</span>
+        </div>
+        <button id="btn-close-detail-modal" type="button" aria-label="Tutup Detail Produk" class="w-10 h-10 rounded-xl bg-blush-light text-velvet hover:bg-dusty hover:text-white flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 overflow-y-auto space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-start">
+          <div class="sm:col-span-5 rounded-2xl overflow-hidden aspect-square bg-blush-light border border-blush-deep/50">
+            <img id="detail-modal-img" src="" alt="" class="w-full h-full object-cover" />
+          </div>
+          <div class="sm:col-span-7 space-y-3">
+            <p id="detail-modal-subtitle" class="text-xs font-bold uppercase tracking-wider text-rosegold"></p>
+            <h3 id="detail-modal-title" class="font-serif font-bold text-2xl sm:text-3xl text-velvet leading-tight"></h3>
+            <div class="flex items-baseline gap-2.5">
+              <span id="detail-modal-price" class="text-xl font-bold text-rosegold"></span>
+              <span id="detail-modal-size" class="text-xs text-velvet-muted font-medium"></span>
+            </div>
+            <p id="detail-modal-desc" class="text-sm text-velvet-muted leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Key Ingredients & How To Use -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl p-4 border border-blush-deep/60">
+            <span class="text-xs font-bold uppercase tracking-wider text-rosegold block mb-1.5">Key Ingredients</span>
+            <p id="detail-modal-ingredients" class="text-xs sm:text-sm font-medium text-velvet leading-relaxed"></p>
+          </div>
+          <div class="bg-white rounded-2xl p-4 border border-blush-deep/60">
+            <span class="text-xs font-bold uppercase tracking-wider text-rosegold block mb-1.5">Cara Pemakaian</span>
+            <p id="detail-modal-howto" class="text-xs sm:text-sm text-velvet-muted leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Modal Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2 border-t border-blush-deep/60">
+          <button id="btn-detail-toggle-wishlist" type="button" class="px-5 py-3.5 rounded-2xl bg-blush-light hover:bg-blush text-rosegold border border-dusty/40 font-bold text-sm transition-colors min-h-[50px] flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span id="detail-wishlist-label">Simpan ke Wishlist</span>
+          </button>
+
+          <button id="btn-detail-add-cart" type="button" class="flex-1 py-3.5 px-6 rounded-2xl bg-rosegold-gradient text-white font-bold text-sm shadow-md hover:opacity-95 transition-all active:scale-98 min-h-[50px] flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>Tambah ke Tas Belanja</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WISHLIST DRAWER ==================== -->
+  <div id="wishlist-drawer-overlay" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="wishlist-drawer-title">
+    <div id="wishlist-drawer-backdrop" class="fixed inset-0 bg-velvet/50 backdrop-blur-xs drawer-backdrop opacity-0"></div>
+    <div id="wishlist-drawer-panel" class="fixed inset-y-0 right-0 w-full max-w-md bg-cream shadow-2xl flex flex-col drawer-panel translate-x-full border-l border-blush-deep">
+      <div class="px-5 py-4 bg-white border-b border-blush-deep/60 flex items-center justify-between">
+        <div>
+          <h2 id="wishlist-drawer-title" class="font-serif font-bold text-2xl text-velvet">Wishlist Saya</h2>
+          <p id="wishlist-subtitle" class="text-xs text-velvet-muted">0 produk tersimpan</p>
+        </div>
+        <button id="btn-close-wishlist" type="button" aria-label="Tutup Wishlist" class="w-11 h-11 rounded-2xl bg-blush-light text-velvet hover:bg-dusty hover:text-white flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5">
+        <div id="wishlist-empty-state" class="text-center py-14 px-4">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-blush text-rosegold flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-velvet">Wishlist Masih Kosong</h3>
+          <p class="text-xs sm:text-sm text-velvet-muted mt-1.5">Klik ikon hati pada produk favorit Anda untuk menyimpannya di sini.</p>
+        </div>
+
+        <div id="wishlist-items-list" class="space-y-3 hidden">
+          <!-- Item wishlist di-render via DOM API -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SHOPPING CART & CHECKOUT DRAWER ==================== -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+    <div id="cart-drawer-backdrop" class="fixed inset-0 bg-velvet/50 backdrop-blur-xs drawer-backdrop opacity-0"></div>
+    <div id="cart-drawer-panel" class="fixed inset-y-0 right-0 w-full max-w-md bg-cream shadow-2xl flex flex-col drawer-panel translate-x-full border-l border-blush-deep">
+      <!-- Header -->
+      <div class="px-5 py-4 bg-white border-b border-blush-deep/60 flex items-center justify-between">
+        <div>
+          <h2 id="cart-drawer-title" class="font-serif font-bold text-2xl text-velvet">Tas Belanja</h2>
+          <p id="cart-subtitle" class="text-xs text-velvet-muted">0 item dipilih</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-clear-cart" type="button" class="hidden text-xs font-semibold text-rosegold hover:underline px-2.5 py-2 rounded-xl min-h-[40px]">
+            Hapus Semua
+          </button>
+          <button id="btn-close-cart" type="button" aria-label="Tutup Tas Belanja" class="w-11 h-11 rounded-2xl bg-blush-light text-velvet hover:bg-dusty hover:text-white flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable Cart & Checkout Form -->
+      <div class="flex-1 overflow-y-auto p-5 space-y-6">
+        <!-- Empty View -->
+        <div id="cart-empty-view" class="text-center py-14 px-4">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-blush text-rosegold flex items-center justify-center mb-4">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-velvet">Tas Belanja Kosong</h3>
+          <p class="text-xs sm:text-sm text-velvet-muted mt-1.5">Jelajahi katalog skincare &amp; makeup kami untuk mulai berbelanja.</p>
+          <button id="btn-cart-browse" type="button" class="mt-5 px-6 py-3 rounded-2xl bg-rosegold-gradient text-white text-xs sm:text-sm font-bold hover:opacity-95 transition-opacity min-h-[44px]">
+            Mulai Belanja
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-list" class="space-y-3 hidden">
+          <!-- Item keranjang di-render via DOM API -->
+        </div>
+
+        <!-- Promo Code Box -->
+        <div id="promo-box" class="hidden bg-white rounded-2xl p-4 border border-blush-deep/70 space-y-2.5">
+          <label for="promo-code-input" class="block text-xs font-bold uppercase tracking-wider text-velvet">
+            Kode Promo (Coba: GLOW10)
+          </label>
+          <div class="flex gap-2">
+            <input
+              id="promo-code-input"
+              type="text"
+              maxlength="20"
+              placeholder="Masukkan kode promo"
+              class="flex-1 px-3.5 py-2.5 rounded-xl bg-cream border border-blush-deep text-xs sm:text-sm uppercase font-semibold text-velvet focus:outline-none focus:ring-2 focus:ring-dusty min-h-[44px]"
+            />
+            <button id="btn-apply-promo" type="button" class="px-4 py-2.5 rounded-xl bg-blush hover:bg-dusty hover:text-white text-rosegold font-bold text-xs transition-colors min-h-[44px]">
+              Terapkan
+            </button>
+          </div>
+          <p id="promo-feedback-msg" class="hidden text-xs font-semibold"></p>
+        </div>
+
+        <!-- Checkout Form -->
+        <form id="glowe-checkout-form" class="hidden space-y-4 pt-3 border-t border-blush-deep/60" novalidate>
+          <h3 class="font-serif font-bold text-xl text-velvet">Informasi Pengiriman &amp; Pembayaran</h3>
+
+          <div>
+            <label for="checkout-name" class="block text-xs font-bold text-velvet mb-1.5">
+              Nama Lengkap Penerima <span class="text-rosegold">*</span>
+            </label>
+            <input
+              id="checkout-name"
+              type="text"
+              required
+              minlength="2"
+              maxlength="80"
+              autocomplete="name"
+              placeholder="Contoh: Clarissa Putri"
+              class="w-full px-4 py-3 rounded-2xl bg-white border border-blush-deep text-sm text-velvet focus:outline-none focus:ring-2 focus:ring-dusty min-h-[46px]"
+            />
+            <p id="err-checkout-name" class="hidden text-xs text-rosegold font-semibold mt-1"></p>
+          </div>
+
+          <div>
+            <label for="checkout-phone" class="block text-xs font-bold text-velvet mb-1.5">
+              Nomor WhatsApp / HP <span class="text-rosegold">*</span>
+            </label>
+            <input
+              id="checkout-phone"
+              type="tel"
+              required
+              minlength="9"
+              maxlength="16"
+              autocomplete="tel"
+              placeholder="Contoh: 081234567890"
+              class="w-full px-4 py-3 rounded-2xl bg-white border border-blush-deep text-sm text-velvet focus:outline-none focus:ring-2 focus:ring-dusty min-h-[46px]"
+            />
+            <p id="err-checkout-phone" class="hidden text-xs text-rosegold font-semibold mt-1"></p>
+          </div>
+
+          <div>
+            <label for="checkout-address" class="block text-xs font-bold text-velvet mb-1.5">
+              Alamat Lengkap Pengiriman <span class="text-rosegold">*</span>
+            </label>
+            <textarea
+              id="checkout-address"
+              rows="2"
+              required
+              minlength="10"
+              maxlength="250"
+              autocomplete="street-address"
+              placeholder="Contoh: Jl. Senopati No. 45, Kebayoran Baru, Jakarta Selatan"
+              class="w-full px-4 py-3 rounded-2xl bg-white border border-blush-deep text-sm text-velvet focus:outline-none focus:ring-2 focus:ring-dusty"
+            ></textarea>
+            <p id="err-checkout-address" class="hidden text-xs text-rosegold font-semibold mt-1"></p>
+          </div>
+
+          <div>
+            <label for="checkout-payment" class="block text-xs font-bold text-velvet mb-1.5">
+              Metode Pembayaran
+            </label>
+            <select
+              id="checkout-payment"
+              class="w-full px-4 py-3 rounded-2xl bg-white border border-blush-deep text-sm font-medium text-velvet focus:outline-none focus:ring-2 focus:ring-dusty min-h-[46px] cursor-pointer"
+            >
+              <option value="Transfer Bank (BCA / Mandiri / BNI)">Transfer Bank (BCA / Mandiri / BNI)</option>
+              <option value="E-Wallet (QRIS / GoPay / OVO / ShopeePay)">E-Wallet (QRIS / GoPay / OVO / ShopeePay)</option>
+              <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat)</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer Totals & Submit Button -->
+      <div id="cart-footer-panel" class="hidden p-5 bg-white border-t border-blush-deep/60 space-y-2.5">
+        <div class="flex justify-between text-xs text-velvet-muted">
+          <span>Subtotal Produk</span>
+          <span id="summary-subtotal" class="font-semibold text-velvet">Rp 0</span>
+        </div>
+        <div id="summary-discount-row" class="hidden flex justify-between text-xs text-rosegold font-semibold">
+          <span>Diskon Promo (GLOW10)</span>
+          <span id="summary-discount">- Rp 0</span>
+        </div>
+        <div class="flex justify-between text-xs text-velvet-muted">
+          <span>Ongkos Kirim</span>
+          <span id="summary-shipping" class="font-semibold text-velvet">Rp 15.000</span>
+        </div>
+        <div class="flex justify-between items-baseline pt-2 border-t border-blush-deep/50">
+          <span class="text-sm font-bold text-velvet">Total Pembayaran</span>
+          <span id="summary-grand-total" class="font-serif font-bold text-2xl text-rosegold">Rp 0</span>
+        </div>
+
+        <button
+          id="btn-submit-checkout"
+          type="button"
+          class="w-full mt-2 py-4 px-5 rounded-2xl bg-rosegold-gradient text-white font-bold text-sm shadow-md hover:shadow-lg hover:opacity-95 transition-all active:scale-98 min-h-[52px]"
+        >
+          Selesaikan Pesanan Sekarang
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL KONFIRMASI PESANAN SUKSES ==================== -->
+  <div id="order-success-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="order-success-title">
+    <div id="order-success-backdrop" class="fixed inset-0 bg-velvet/60 backdrop-blur-xs"></div>
+    <div class="relative z-10 w-full max-w-md bg-cream rounded-3xl p-6 sm:p-7 shadow-2xl border border-blush-deep space-y-5 max-h-[90vh] overflow-y-auto">
+      <div class="text-center space-y-2">
+        <div class="w-16 h-16 mx-auto rounded-full bg-rosegold-gradient text-white flex items-center justify-center shadow-md">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span class="inline-block px-3 py-1 rounded-full bg-blush text-rosegold text-xs font-bold">Pesanan Diterima</span>
+        <h3 id="order-success-title" class="font-serif font-bold text-2xl sm:text-3xl text-velvet">Terima Kasih, Cantik!</h3>
+        <p class="text-xs sm:text-sm text-velvet-muted">
+          Pesanan Anda telah dicatat dengan nomor referensi <strong id="receipt-order-id" class="text-velvet">GLW-0000</strong>.
+        </p>
+      </div>
+
+      <!-- Receipt Summary Box -->
+      <div class="bg-white rounded-2xl p-4 border border-blush-deep/70 space-y-2.5 text-xs">
+        <div class="flex justify-between">
+          <span class="text-velvet-muted">Penerima:</span>
+          <span id="receipt-name" class="font-bold text-velvet text-right"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-velvet-muted">WhatsApp:</span>
+          <span id="receipt-phone" class="font-semibold text-velvet"></span>
+        </div>
+        <div class="flex justify-between gap-4">
+          <span class="text-velvet-muted shrink-0">Alamat:</span>
+          <span id="receipt-address" class="font-medium text-velvet text-right"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-velvet-muted">Pembayaran:</span>
+          <span id="receipt-payment" class="font-semibold text-velvet text-right"></span>
+        </div>
+        <div class="pt-2 border-t border-blush-deep/50">
+          <span class="text-velvet-muted block mb-1">Rincian Item:</span>
+          <ul id="receipt-items-list" class="space-y-1 text-velvet font-medium">
+            <!-- Rendered safely -->
+          </ul>
+        </div>
+        <div class="pt-2 border-t border-blush-deep/50 flex justify-between text-sm font-bold text-rosegold">
+          <span>Total Dibayar:</span>
+          <span id="receipt-total"></span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="space-y-2.5">
+        <button id="btn-send-receipt-wa" type="button" class="w-full py-3.5 px-4 rounded-2xl bg-rosegold-gradient text-white font-bold text-sm shadow-sm hover:opacity-95 transition-opacity min-h-[48px]">
+          Kirim Salinan Pesanan ke WhatsApp Admin
+        </button>
+        <button id="btn-close-success-modal" type="button" class="w-full py-3 px-4 rounded-2xl bg-blush-light hover:bg-blush text-velvet font-semibold text-sm transition-colors min-h-[44px]">
+          Kembali Berbelanja
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOM CONFIRM MODAL (PENGGANTI confirm()) ==================== -->
+  <div id="custom-confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div id="custom-confirm-backdrop" class="fixed inset-0 bg-velvet/55 backdrop-blur-xs"></div>
+    <div class="relative z-10 w-full max-w-sm bg-cream rounded-3xl p-6 shadow-2xl border border-blush-deep space-y-4">
+      <h3 id="confirm-title" class="font-serif font-bold text-2xl text-velvet">Kosongkan Tas Belanja?</h3>
+      <p class="text-sm text-velvet-muted leading-relaxed">
+        Semua produk kecantikan yang ada di tas belanja Anda akan dihapus. Apakah Anda yakin?
+      </p>
+      <div class="flex justify-end gap-2.5 pt-2">
+        <button id="btn-confirm-no" type="button" class="px-4 py-2.5 rounded-xl bg-white border border-blush-deep text-velvet text-sm font-semibold hover:bg-blush-light min-h-[44px]">
+          Batal
+        </button>
+        <button id="btn-confirm-yes" type="button" class="px-5 py-2.5 rounded-xl bg-rosegold-gradient text-white text-sm font-bold hover:opacity-95 min-h-[44px]">
+          Ya, Hapus Semua
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION CONTAINER ==================== -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 max-w-xs sm:max-w-sm w-full pointer-events-none px-4 sm:px-0">
+  </div>
+
+  <!-- =====================================================================
+       [FILE MODULAR: app.js]
+       Saat memisahkan ke multi-file produksi, pindahkan blok <script> ini ke app.js
+       ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /**
+       * Konstanta & Konfigurasi Penyimpanan (Zero Secrets)
+       */
+      const WHATSAPP_ADMIN_PHONE = '6281234567890';
+      const STORAGE_CART_KEY = 'glowe_beauty_cart_v1';
+      const STORAGE_WISHLIST_KEY = 'glowe_beauty_wishlist_v1';
+      const FREE_SHIPPING_THRESHOLD = 350000;
+      const STANDARD_SHIPPING_FEE = 15000;
+      const VALID_PROMO_CODE = 'GLOW10';
+      const PROMO_DISCOUNT_RATE = 0.10;
+
+      /**
+       * Katalog 8 Produk Skincare & Makeup GLOWÉ BEAUTY
+       */
+      const BEAUTY_PRODUCTS = [
+        {
+          id: 'rose-quartz-serum',
+          name: 'Rose Quartz Hydrating Serum',
+          subtitle: 'Deep Moisture & Barrier Repair',
+          category: 'Skincare',
+          skinTypes: ['Kering', 'Sensitif', 'Kombinasi'],
+          size: '30 ml',
+          price: 189000,
+          featuredRank: 1,
+          ingredients: '5x Ceramide Complex, Damask Rose Hydrosol, Hyaluronic Acid, Panthenol (Pro-Vitamin B5)',
+          howToUse: 'Teteskan 2–3 tetes pada wajah bersih setelah toner, tepuk lembut hingga meresap sempurna pada pagi dan malam hari.',
+          description: 'Serum penghidrasi bertekstur ringan dengan ekstrak kelopak mawar Damask dan 5 jenis Ceramide untuk mengunci kelembapan hingga 24 jam serta membuat kulit tampak kenyal bercahaya.',
+          image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'velvet-petal-liptint',
+          name: 'Velvet Petal Lip Tint',
+          subtitle: 'Soft-Focus Rose Stain',
+          category: 'Makeup',
+          skinTypes: ['Kering', 'Berminyak', 'Kombinasi', 'Sensitif'],
+          size: '4.5 g',
+          price: 115000,
+          featuredRank: 2,
+          ingredients: 'Rosehip Seed Oil, Squalane, Vitamin E, Shea Butter Micro-Emulsion',
+          howToUse: 'Aplikasikan di bagian tengah bibir lalu baurkan dengan jari untuk efek ombre lembut, atau oleskan penuh untuk warna elegan.',
+          description: 'Lip tint bertekstur velvet ringan yang memberikan warna rose-berry alami tanpa membuat bibir kering atau pecah-pecah. Tahan lama hingga 8 jam.',
+          image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'dewy-pearl-cushion',
+          name: 'Dewy Pearl Cushion SPF 35 PA+++',
+          subtitle: 'Luminous Second-Skin Coverage',
+          category: 'Makeup',
+          skinTypes: ['Kering', 'Kombinasi', 'Sensitif'],
+          size: '15 g',
+          price: 225000,
+          featuredRank: 3,
+          ingredients: 'Niacinamide 2%, Pearl Extract, Centella Asiatica, Mineral UV Filters',
+          howToUse: 'Tekan puff secara perlahan pada bantalan cushion, lalu tepuk merata ke seluruh wajah dari bagian tengah ke arah luar.',
+          description: 'Cushion hybrid skincare-makeup dengan hasil akhir satin-dewy yang menyamarkan kemerahan dan pori tanpa terasa berat di kulit.',
+          image: 'https://images.unsplash.com/photo-1631730486784-5456119f69ae?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'centella-calming-toner',
+          name: 'Centella Calming Rose Toner',
+          subtitle: 'Soothing & Pore Balancing Essence Toner',
+          category: 'Skincare',
+          skinTypes: ['Berminyak', 'Sensitif', 'Kombinasi'],
+          size: '120 ml',
+          price: 145000,
+          featuredRank: 4,
+          ingredients: 'Madagascar Centella Asiatica 70%, Witch Hazel, Allantoin, Rose Water',
+          howToUse: 'Tuangkan pada kapas atau telapak tangan, usapkan lembut ke seluruh wajah setelah mencuci muka.',
+          description: 'Toner penyejuk kulit bebas alkohol yang meredakan kemerahan seketika, menyeimbangkan sebum berlebih, dan mempersiapkan kulit menyerap serum.',
+          image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'silk-glow-blush',
+          name: 'Silk Glow Cream Blush Stick',
+          subtitle: 'Dewy Rose-Gold Flush',
+          category: 'Makeup',
+          skinTypes: ['Kering', 'Kombinasi', 'Berminyak', 'Sensitif'],
+          size: '7 g',
+          price: 139000,
+          featuredRank: 5,
+          ingredients: 'Jojoba Esters, Camellia Japonica Oil, Micro-Fine Rose Pearl Pigments',
+          howToUse: 'Oleskan langsung pada tulang pipi lalu baurkan menggunakan ujung jari atau beauty sponge untuk rona sehat merona.',
+          description: 'Blush stik creamy yang meleleh lembut di kulit dengan kilau halus rose gold, menciptakan rona pipi segar alami sepanjang hari.',
+          image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'niacinamide-radiance-essence',
+          name: 'Niacinamide 5% Radiance Essence',
+          subtitle: 'Brightening & Sebum Control Booster',
+          category: 'Skincare',
+          skinTypes: ['Berminyak', 'Kombinasi'],
+          size: '50 ml',
+          price: 175000,
+          featuredRank: 6,
+          ingredients: 'Niacinamide 5%, Alpha Arbutin, Zinc PCA, White Peony Extract',
+          howToUse: 'Gunakan 3–4 tetes pada pagi dan malam hari sebelum pelembap untuk membantu mencerahkan noda bekas jerawat.',
+          description: 'Essence pencerah berformula ringan yang meratakan warna kulit kusam sekaligus mengontrol kilap minyak di area T-zone tanpa menyumbat pori.',
+          image: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'honey-oat-cleanser',
+          name: 'Honey Oat Gentle Gel Cleanser',
+          subtitle: 'Low-pH Barrier Friendly Wash',
+          category: 'Skincare',
+          skinTypes: ['Sensitif', 'Kering', 'Kombinasi', 'Berminyak'],
+          size: '100 ml',
+          price: 119000,
+          featuredRank: 7,
+          ingredients: 'Colloidal Oatmeal, Manuka Honey Extract, Amino Acid Surfactants, Chamomile',
+          howToUse: 'Busakan secukupnya dengan air pada telapak tangan, pijat lembut wajah selama 30 detik lalu bilas hingga bersih.',
+          description: 'Pembersih wajah ber-pH 5.2 tanpa SLS yang mengangkat kotoran dan sisa riasan dengan lembut tanpa rasa tertarik atau kering setelah dibilas.',
+          image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=700&q=80'
+        },
+        {
+          id: 'rosehip-sleeping-mask',
+          name: 'Rosehip Overnight Sleeping Mask',
+          subtitle: 'Intensive Night Recovery Cream-Gel',
+          category: 'Skincare',
+          skinTypes: ['Kering', 'Sensitif'],
+          size: '50 g',
+          price: 198000,
+          featuredRank: 8,
+          ingredients: 'Organic Rosehip Oil, Squalane, Beta-Glucan, Bakuchiol 0.5%',
+          howToUse: 'Oleskan sebagai langkah terakhir skincare malam hari sebelum tidur, bilas keesokan paginya untuk kulit halus bercahaya.',
+          description: 'Masker tidur mewah beraroma mawar lembut yang menutrisi dan memperbaiki tekstur kulit lelah selama Anda terlelap.',
+          image: 'https://images.unsplash.com/photo-1570194065650-d99fb4b8ccb0?auto=format&fit=crop&w=700&q=80'
+        }
+      ];
+
+      /**
+       * Data Pertanyaan & Profil Hasil Kuis Skin Type Finder (3 Langkah)
+       */
+      const SKIN_QUIZ_QUESTIONS = [
+        {
+          step: 1,
+          question: 'Bagaimana kondisi kulit wajah Anda saat memasuki siang hari?',
+          options: [
+            { label: 'Terasa kencang, kering, atau sedikit mengelupas', scoreType: 'Kering' },
+            { label: 'Tampak mengilap dan berminyak di seluruh wajah', scoreType: 'Berminyak' },
+            { label: 'Berminyak di area T-zone (dahi & hidung), namun pipi normal/kering', scoreType: 'Kombinasi' },
+            { label: 'Mudah memerah, hangat, atau terasa perih saat terkena panas', scoreType: 'Sensitif' }
+          ]
+        },
+        {
+          step: 2,
+          question: 'Apa reaksi kulit Anda segera setelah mencuci muka dengan sabun wajah?',
+          options: [
+            { label: 'Terasa tertarik, kaku, dan butuh pelembap secepatnya', scoreType: 'Kering' },
+            { label: 'Terasa bersih segar, namun 1–2 jam kemudian minyak kembali muncul', scoreType: 'Berminyak' },
+            { label: 'Area pipi terasa agak kering, sementara dahi tetap terasa halus', scoreType: 'Kombinasi' },
+            { label: 'Sering muncul bercak kemerahan atau rasa gatal ringan', scoreType: 'Sensitif' }
+          ]
+        },
+        {
+          step: 3,
+          question: 'Apa fokus utama perawatan kulit yang paling Anda inginkan saat ini?',
+          options: [
+            { label: 'Hidrasi mendalam, kulit kenyal, dan mengatasi tampilan kusam kering', scoreType: 'Kering' },
+            { label: 'Mengontrol sebum berlebih dan menyamarkan tampilan pori besar', scoreType: 'Berminyak' },
+            { label: 'Menyeimbangkan area kering dan berminyak secara bersamaan', scoreType: 'Kombinasi' },
+            { label: 'Menenangkan iritasi ringan dan memperkuat skin barrier', scoreType: 'Sensitif' }
+          ]
+        }
+      ];
+
+      const SKIN_PROFILES = {
+        Kering: {
+          title: 'Kulit Kering (Dry Skin)',
+          description: 'Kulit Anda membutuhkan ekstra hidrasi dan lipid pelindung (Ceramide & Squalane) untuk mengunci kelembapan serta menjaga tekstur tetap lembut bercahaya.'
+        },
+        Berminyak: {
+          title: 'Kulit Berminyak (Oily Skin)',
+          description: 'Kulit Anda memproduksi sebum lebih aktif. Gunakan hidrasi bertekstur ringan (water-based) dengan Niacinamide & Centella untuk menyeimbangkan minyak tanpa menyumbat pori.'
+        },
+        Kombinasi: {
+          title: 'Kulit Kombinasi (Combination Skin)',
+          description: 'Area T-zone Anda cenderung berminyak sementara area pipi membutuhkan kelembapan ekstra. Pilih formula penyeimbang pH yang lembut dan berlapis ringan.'
+        },
+        Sensitif: {
+          title: 'Kulit Sensitif (Sensitive Skin)',
+          description: 'Skin barrier Anda memerlukan perlindungan ekstra lembut bebas alkohol keras dan pewangi sintetis, diperkaya Centella Asiatica, Oat, dan Ceramide.'
+        }
+      };
+
+      /**
+       * State Aplikasi
+       */
+      const state = {
+        selectedCategory: 'Semua',
+        selectedSkinType: 'Semua Kulit',
+        sortOption: 'featured',
+        searchQuery: '',
+        cart: [],
+        wishlist: [],
+        promoApplied: false,
+        activeDetailProductId: null,
+        lastOrderReceipt: null,
+        quizStep: 0,
+        quizAnswers: [null, null, null]
+      };
+
+      /**
+       * Utilitas Keamanan & Helper DOM (100% Anti-XSS)
+       */
+      function formatRupiah(num) {
+        const safeNum = Number.isFinite(num) ? Math.round(num) : 0;
+        return 'Rp ' + safeNum.toLocaleString('id-ID');
+      }
+
+      function sanitizeText(value, maxLen) {
+        if (typeof value !== 'string') return '';
+        return value.replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, maxLen);
+      }
+
+      function createEl(tag, className, text) {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        if (typeof text === 'string') el.textContent = text;
+        return el;
+      }
+
+      /**
+       * LocalStorage Persistence
+       */
+      function loadStoredCart() {
+        try {
+          const raw = window.localStorage.getItem(STORAGE_CART_KEY);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) return [];
+          const valid = [];
+          for (const entry of parsed) {
+            if (!entry || typeof entry !== 'object') continue;
+            const product = BEAUTY_PRODUCTS.find((p) => p.id === entry.productId);
+            if (!product) continue;
+            const qty = Math.min(Math.max(parseInt(entry.qty, 10) || 1, 1), 99);
+            valid.push({ productId: product.id, qty: qty });
+          }
+          return valid;
+        } catch (_e) {
+          return [];
+        }
+      }
+
+      function saveCart() {
+        try {
+          window.localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(state.cart));
+        } catch (_e) {
+          // Abaikan bila storage terbatas
+        }
+      }
+
+      function loadStoredWishlist() {
+        try {
+          const raw = window.localStorage.getItem(STORAGE_WISHLIST_KEY);
+          if (!raw) return [];
+          const parsed = JSON.parse(raw);
+          if (!Array.isArray(parsed)) return [];
+          return parsed.filter((id) => BEAUTY_PRODUCTS.some((p) => p.id === id));
+        } catch (_e) {
+          return [];
+        }
+      }
+
+      function saveWishlist() {
+        try {
+          window.localStorage.setItem(STORAGE_WISHLIST_KEY, JSON.stringify(state.wishlist));
+        } catch (_e) {
+          // Abaikan bila storage terbatas
+        }
+      }
+
+      /**
+       * Notifikasi Toast Elegan (Tanpa alert())
+       */
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = createEl(
+          'div',
+          'pointer-events-auto toast-item flex items-center gap-3 px-4 py-3.5 rounded-2xl shadow-xl border text-xs sm:text-sm font-semibold ' +
+            (type === 'error'
+              ? 'bg-rosegold-dark text-white border-white/20'
+              : 'bg-velvet text-cream border-dusty/40')
+        );
+
+        const indicator = createEl(
+          'span',
+          'w-2.5 h-2.5 rounded-full shrink-0 ' + (type === 'error' ? 'bg-blush' : 'bg-dusty-light')
+        );
+        const label = createEl('span', 'leading-snug', sanitizeText(message, 140));
+
+        toast.appendChild(indicator);
+        toast.appendChild(label);
+        container.appendChild(toast);
+
+        window.setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(8px)';
+          toast.style.transition = 'all 0.2s ease';
+          window.setTimeout(() => {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+          }, 220);
+        }, 3000);
+      }
+
+      /**
+       * Render Katalog Produk (100% DOM API & textContent)
+       */
+      function renderCatalog() {
+        const grid = document.getElementById('products-grid');
+        const emptyState = document.getElementById('catalog-empty-state');
+        const countEl = document.getElementById('catalog-result-count');
+        if (!grid || !emptyState || !countEl) return;
+
+        while (grid.firstChild) {
+          grid.removeChild(grid.firstChild);
+        }
+
+        const q = state.searchQuery.toLowerCase();
+
+        let filtered = BEAUTY_PRODUCTS.filter((prod) => {
+          const matchCat = state.selectedCategory === 'Semua' || prod.category === state.selectedCategory;
+          const matchSkin =
+            state.selectedSkinType === 'Semua Kulit' || prod.skinTypes.includes(state.selectedSkinType);
+          const matchSearch =
+            !q ||
+            prod.name.toLowerCase().includes(q) ||
+            prod.subtitle.toLowerCase().includes(q) ||
+            prod.ingredients.toLowerCase().includes(q) ||
+            prod.category.toLowerCase().includes(q);
+
+          return matchCat && matchSkin && matchSearch;
+        });
+
+        if (state.sortOption === 'price-asc') {
+          filtered = filtered.slice().sort((a, b) => a.price - b.price);
+        } else if (state.sortOption === 'price-desc') {
+          filtered = filtered.slice().sort((a, b) => b.price - a.price);
+        } else {
+          filtered = filtered.slice().sort((a, b) => a.featuredRank - b.featuredRank);
+        }
+
+        countEl.textContent = 'Menampilkan ' + filtered.length + ' dari ' + BEAUTY_PRODUCTS.length + ' produk';
+
+        if (filtered.length === 0) {
+          grid.classList.add('hidden');
+          emptyState.classList.remove('hidden');
+          return;
+        }
+
+        grid.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+
+        filtered.forEach((product) => {
+          const isWished = state.wishlist.includes(product.id);
+
+          const card = createEl(
+            'article',
+            'beauty-card bg-white rounded-3xl border border-blush-deep/60 overflow-hidden shadow-xs hover:shadow-xl flex flex-col justify-between'
+          );
+
+          // Image Area
+          const imgContainer = createEl('div', 'relative aspect-[4/4] bg-blush-light overflow-hidden cursor-pointer');
+          imgContainer.addEventListener('click', () => openProductDetailModal(product.id));
+
+          const img = document.createElement('img');
+          img.src = product.image;
+          img.alt = product.name;
+          img.loading = 'lazy';
+          img.className = 'beauty-card-img w-full h-full object-cover';
+          img.onerror = function () {
+            this.src = 'https://placehold.co/600x600/F8E5EA/B76E79?text=' + encodeURIComponent(product.name);
+          };
+
+          const catBadge = createEl(
+            'span',
+            'absolute top-3.5 left-3.5 px-3 py-1 rounded-full text-[11px] font-bold shadow-xs ' +
+              (product.category === 'Skincare' ? 'bg-white/95 text-rosegold' : 'bg-rosegold text-white'),
+            product.category
+          );
+
+          // Wishlist Heart Toggle Button on Card
+          const wishBtn = createEl(
+            'button',
+            'absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-xs transition-transform active:scale-90 ' +
+              (isWished ? 'text-rosegold' : 'text-velvet-muted'),
+            ''
+          );
+          wishBtn.type = 'button';
+          wishBtn.setAttribute('aria-label', isWished ? 'Hapus dari Wishlist' : 'Tambah ke Wishlist');
+          wishBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleWishlist(product.id);
+          });
+
+          const heartSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          heartSvg.setAttribute('viewBox', '0 0 24 24');
+          heartSvg.setAttribute('class', 'w-5 h-5');
+          heartSvg.setAttribute('fill', isWished ? 'currentColor' : 'none');
+          heartSvg.setAttribute('stroke', 'currentColor');
+          heartSvg.setAttribute('stroke-width', '2');
+          const heartPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          heartPath.setAttribute(
+            'd',
+            'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'
+          );
+          heartSvg.appendChild(heartPath);
+          wishBtn.appendChild(heartSvg);
+
+          imgContainer.appendChild(img);
+          imgContainer.appendChild(catBadge);
+          imgContainer.appendChild(wishBtn);
+
+          // Body Area
+          const body = createEl('div', 'p-5 flex-1 flex flex-col justify-between space-y-4');
+
+          const infoTop = createEl('div', 'space-y-1.5');
+          const subEl = createEl('p', 'text-[11px] font-bold uppercase tracking-wider text-rosegold', product.subtitle);
+
+          const titleBtn = createEl(
+            'button',
+            'text-left font-serif font-bold text-xl text-velvet hover:text-rosegold transition-colors leading-snug block',
+            product.name
+          );
+          titleBtn.type = 'button';
+          titleBtn.addEventListener('click', () => openProductDetailModal(product.id));
+
+          // Skin Type Pills
+          const skinTagsRow = createEl('div', 'flex flex-wrap gap-1 pt-1');
+          product.skinTypes.slice(0, 3).forEach((st) => {
+            const pill = createEl(
+              'span',
+              'px-2 py-0.5 rounded-md bg-cream-soft text-[10px] font-semibold text-velvet-muted border border-blush-deep/60',
+              st
+            );
+            skinTagsRow.appendChild(pill);
+          });
+
+          infoTop.appendChild(subEl);
+          infoTop.appendChild(titleBtn);
+          infoTop.appendChild(skinTagsRow);
+
+          // Price & Action Buttons
+          const bottomRow = createEl('div', 'pt-3 border-t border-blush-deep/50 space-y-3');
+          const priceLine = createEl('div', 'flex items-baseline justify-between');
+          const priceEl = createEl('span', 'font-bold text-base sm:text-lg text-velvet', formatRupiah(product.price));
+          const sizeEl = createEl('span', 'text-xs text-velvet-muted', product.size);
+          priceLine.appendChild(priceEl);
+          priceLine.appendChild(sizeEl);
+
+          const actionsLine = createEl('div', 'flex items-center gap-2');
+          const detailBtn = createEl(
+            'button',
+            'px-3.5 py-2.5 rounded-xl bg-cream-soft hover:bg-blush text-velvet text-xs font-bold transition-colors min-h-[44px]',
+            'Detail'
+          );
+          detailBtn.type = 'button';
+          detailBtn.addEventListener('click', () => openProductDetailModal(product.id));
+
+          const addCartBtn = createEl(
+            'button',
+            'flex-1 py-2.5 px-3.5 rounded-xl bg-rosegold-gradient text-white text-xs font-bold shadow-xs hover:opacity-95 transition-all active:scale-95 min-h-[44px]',
+            '+ Tambah'
+          );
+          addCartBtn.type = 'button';
+          addCartBtn.addEventListener('click', () => addToCart(product.id, 1));
+
+          actionsLine.appendChild(detailBtn);
+          actionsLine.appendChild(addCartBtn);
+
+          bottomRow.appendChild(priceLine);
+          bottomRow.appendChild(actionsLine);
+
+          body.appendChild(infoTop);
+          body.appendChild(bottomRow);
+
+          card.appendChild(imgContainer);
+          card.appendChild(body);
+          grid.appendChild(card);
+        });
+      }
+
+      /**
+       * Wishlist Management
+       */
+      function toggleWishlist(productId) {
+        const product = BEAUTY_PRODUCTS.find((p) => p.id === productId);
+        if (!product) return;
+
+        const idx = state.wishlist.indexOf(productId);
+        if (idx > -1) {
+          state.wishlist.splice(idx, 1);
+          showToast(product.name + ' dihapus dari Wishlist.');
+        } else {
+          state.wishlist.push(productId);
+          showToast(product.name + ' disimpan ke Wishlist.');
+        }
+
+        saveWishlist();
+        renderCatalog();
+        renderWishlistUI();
+
+        if (state.activeDetailProductId === productId) {
+          updateDetailModalWishlistButton(productId);
+        }
+      }
+
+      function renderWishlistUI() {
+        const badge = document.getElementById('wishlist-badge');
+        const subtitle = document.getElementById('wishlist-subtitle');
+        const emptyState = document.getElementById('wishlist-empty-state');
+        const listEl = document.getElementById('wishlist-items-list');
+
+        if (badge) badge.textContent = String(state.wishlist.length);
+        if (subtitle) subtitle.textContent = state.wishlist.length + ' produk tersimpan';
+
+        if (!emptyState || !listEl) return;
+
+        while (listEl.firstChild) {
+          listEl.removeChild(listEl.firstChild);
+        }
+
+        if (state.wishlist.length === 0) {
+          emptyState.classList.remove('hidden');
+          listEl.classList.add('hidden');
+          return;
+        }
+
+        emptyState.classList.add('hidden');
+        listEl.classList.remove('hidden');
+
+        state.wishlist.forEach((prodId) => {
+          const product = BEAUTY_PRODUCTS.find((p) => p.id === prodId);
+          if (!product) return;
+
+          const itemCard = createEl('div', 'bg-white rounded-2xl p-3.5 border border-blush-deep/70 flex gap-3.5 items-center');
+
+          const img = document.createElement('img');
+          img.src = product.image;
+          img.alt = product.name;
+          img.className = 'w-16 h-16 rounded-xl object-cover shrink-0 bg-blush-light';
+          img.onerror = function () {
+            this.src = 'https://placehold.co/120x120/F8E5EA/B76E79?text=GLOWE';
+          };
+
+          const info = createEl('div', 'flex-1 min-w-0');
+          const title = createEl('h4', 'font-serif font-bold text-base text-velvet truncate', product.name);
+          const price = createEl('p', 'text-xs font-bold text-rosegold mt-0.5', formatRupiah(product.price));
+
+          const btnRow = createEl('div', 'flex items-center gap-2 mt-2');
+          const moveBtn = createEl(
+            'button',
+            'px-3 py-1.5 rounded-xl bg-rosegold-gradient text-white text-xs font-bold hover:opacity-95 min-h-[36px]',
+            'Pindah ke Tas'
+          );
+          moveBtn.type = 'button';
+          moveBtn.addEventListener('click', () => {
+            addToCart(product.id, 1);
+            toggleWishlist(product.id);
+          });
+
+          const removeBtn = createEl(
+            'button',
+            'px-2.5 py-1.5 rounded-xl bg-cream-soft hover:bg-blush text-velvet-muted text-xs font-semibold min-h-[36px]',
+            'Hapus'
+          );
+          removeBtn.type = 'button';
+          removeBtn.addEventListener('click', () => toggleWishlist(product.id));
+
+          btnRow.appendChild(moveBtn);
+          btnRow.appendChild(removeBtn);
+
+          info.appendChild(title);
+          info.appendChild(price);
+          info.appendChild(btnRow);
+
+          itemCard.appendChild(img);
+          itemCard.appendChild(info);
+          listEl.appendChild(itemCard);
+        });
+      }
+
+      /**
+       * Shopping Cart & Pricing Logic
+       */
+      function addToCart(productId, qty = 1) {
+        const product = BEAUTY_PRODUCTS.find((p) => p.id === productId);
+        if (!product) return;
+
+        const existing = state.cart.find((item) => item.productId === productId);
+        if (existing) {
+          existing.qty = Math.min(existing.qty + qty, 99);
+        } else {
+          state.cart.push({ productId: product.id, qty: Math.min(Math.max(qty, 1), 99) });
+        }
+
+        saveCart();
+        renderCartUI();
+        showToast(product.name + ' ditambahkan ke Tas Belanja.');
+      }
+
+      function updateCartQty(productId, delta) {
+        const idx = state.cart.findIndex((item) => item.productId === productId);
+        if (idx === -1) return;
+
+        const updated = state.cart[idx].qty + delta;
+        if (updated <= 0) {
+          state.cart.splice(idx, 1);
+        } else {
+          state.cart[idx].qty = Math.min(updated, 99);
+        }
+
+        saveCart();
+        renderCartUI();
+      }
+
+      function clearCart() {
+        state.cart = [];
+        state.promoApplied = false;
+        saveCart();
+        renderCartUI();
+        showToast('Tas belanja telah dikosongkan.');
+      }
+
+      function calculateTotals() {
+        let totalItems = 0;
+        let subtotal = 0;
+
+        state.cart.forEach((item) => {
+          const prod = BEAUTY_PRODUCTS.find((p) => p.id === item.productId);
+          if (prod) {
+            totalItems += item.qty;
+            subtotal += prod.price * item.qty;
+          }
+        });
+
+        const discount = state.promoApplied ? Math.round(subtotal * PROMO_DISCOUNT_RATE) : 0;
+        const afterDiscount = Math.max(subtotal - discount, 0);
+        const shipping = afterDiscount === 0 || afterDiscount >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_FEE;
+        const grandTotal = afterDiscount + shipping;
+
+        return { totalItems, subtotal, discount, shipping, grandTotal };
+      }
+
+      function renderCartUI() {
+        const badge = document.getElementById('cart-badge');
+        const subtitle = document.getElementById('cart-subtitle');
+        const clearBtn = document.getElementById('btn-clear-cart');
+        const emptyView = document.getElementById('cart-empty-view');
+        const itemsList = document.getElementById('cart-items-list');
+        const promoBox = document.getElementById('promo-box');
+        const checkoutForm = document.getElementById('glowe-checkout-form');
+        const footerPanel = document.getElementById('cart-footer-panel');
+
+        const { totalItems, subtotal, discount, shipping, grandTotal } = calculateTotals();
+
+        if (badge) badge.textContent = String(totalItems);
+        if (subtitle) subtitle.textContent = totalItems + ' produk dalam tas';
+
+        if (!emptyView || !itemsList || !promoBox || !checkoutForm || !footerPanel || !clearBtn) return;
+
+        while (itemsList.firstChild) {
+          itemsList.removeChild(itemsList.firstChild);
+        }
+
+        if (state.cart.length === 0) {
+          emptyView.classList.remove('hidden');
+          itemsList.classList.add('hidden');
+          promoBox.classList.add('hidden');
+          checkoutForm.classList.add('hidden');
+          footerPanel.classList.add('hidden');
+          clearBtn.classList.add('hidden');
+          return;
+        }
+
+        emptyView.classList.add('hidden');
+        itemsList.classList.remove('hidden');
+        promoBox.classList.remove('hidden');
+        checkoutForm.classList.remove('hidden');
+        footerPanel.classList.remove('hidden');
+        clearBtn.classList.remove('hidden');
+
+        state.cart.forEach((item) => {
+          const product = BEAUTY_PRODUCTS.find((p) => p.id === item.productId);
+          if (!product) return;
+
+          const row = createEl('div', 'bg-white rounded-2xl p-3.5 border border-blush-deep/70 flex gap-3.5 items-center');
+
+          const thumb = document.createElement('img');
+          thumb.src = product.image;
+          thumb.alt = product.name;
+          thumb.className = 'w-16 h-16 rounded-xl object-cover shrink-0 bg-blush-light';
+          thumb.onerror = function () {
+            this.src = 'https://placehold.co/120x120/F8E5EA/B76E79?text=GLOWE';
+          };
+
+          const info = createEl('div', 'flex-1 min-w-0');
+          const title = createEl('h4', 'font-serif font-bold text-base text-velvet truncate', product.name);
+          const linePrice = createEl('p', 'text-xs font-bold text-rosegold mt-0.5', formatRupiah(product.price * item.qty));
+
+          const stepper = createEl('div', 'inline-flex items-center gap-2 mt-2 bg-cream-soft rounded-xl p-1 border border-blush-deep');
+
+          const minusBtn = createEl(
+            'button',
+            'w-8 h-8 rounded-lg bg-white hover:bg-blush text-velvet font-bold flex items-center justify-center transition-colors',
+            '-'
+          );
+          minusBtn.type = 'button';
+          minusBtn.setAttribute('aria-label', 'Kurangi jumlah');
+          minusBtn.addEventListener('click', () => updateCartQty(product.id, -1));
+
+          const qtyText = createEl('span', 'text-xs font-bold text-velvet min-w-[20px] text-center', String(item.qty));
+
+          const plusBtn = createEl(
+            'button',
+            'w-8 h-8 rounded-lg bg-white hover:bg-blush text-velvet font-bold flex items-center justify-center transition-colors',
+            '+'
+          );
+          plusBtn.type = 'button';
+          plusBtn.setAttribute('aria-label', 'Tambah jumlah');
+          plusBtn.addEventListener('click', () => updateCartQty(product.id, 1));
+
+          stepper.appendChild(minusBtn);
+          stepper.appendChild(qtyText);
+          stepper.appendChild(plusBtn);
+
+          info.appendChild(title);
+          info.appendChild(linePrice);
+          info.appendChild(stepper);
+
+          row.appendChild(thumb);
+          row.appendChild(info);
+          itemsList.appendChild(row);
+        });
+
+        // Update Summary Totals
+        const subEl = document.getElementById('summary-subtotal');
+        const discRow = document.getElementById('summary-discount-row');
+        const discEl = document.getElementById('summary-discount');
+        const shipEl = document.getElementById('summary-shipping');
+        const grandEl = document.getElementById('summary-grand-total');
+
+        if (subEl) subEl.textContent = formatRupiah(subtotal);
+        if (discRow && discEl) {
+          if (state.promoApplied && discount > 0) {
+            discRow.classList.remove('hidden');
+            discEl.textContent = '- ' + formatRupiah(discount);
+          } else {
+            discRow.classList.add('hidden');
+          }
+        }
+        if (shipEl) {
+          shipEl.textContent = shipping === 0 ? 'GRATIS' : formatRupiah(shipping);
+        }
+        if (grandEl) grandEl.textContent = formatRupiah(grandTotal);
+      }
+
+      /**
+       * Promo Code Handler
+       */
+      function handleApplyPromo() {
+        const input = document.getElementById('promo-code-input');
+        const feedback = document.getElementById('promo-feedback-msg');
+        if (!input || !feedback) return;
+
+        const code = sanitizeText(input.value, 20).toUpperCase();
+        feedback.classList.remove('hidden');
+
+        if (code === VALID_PROMO_CODE) {
+          state.promoApplied = true;
+          feedback.textContent = 'Kode promo GLOW10 aktif! Anda hemat 10%.';
+          feedback.className = 'text-xs font-semibold text-rosegold';
+          renderCartUI();
+          showToast('Kode promo GLOW10 berhasil diterapkan!');
+        } else {
+          state.promoApplied = false;
+          feedback.textContent = 'Kode promo tidak valid. Gunakan kode GLOW10.';
+          feedback.className = 'text-xs font-semibold text-velvet-muted';
+          renderCartUI();
+        }
+      }
+
+      /**
+       * Checkout Submission & Receipt Generation
+       */
+      function handleCheckoutSubmit() {
+        if (state.cart.length === 0) {
+          showToast('Tas belanja Anda masih kosong.', 'error');
+          return;
+        }
+
+        const nameEl = document.getElementById('checkout-name');
+        const phoneEl = document.getElementById('checkout-phone');
+        const addressEl = document.getElementById('checkout-address');
+        const paymentEl = document.getElementById('checkout-payment');
+
+        const errName = document.getElementById('err-checkout-name');
+        const errPhone = document.getElementById('err-checkout-phone');
+        const errAddress = document.getElementById('err-checkout-address');
+
+        const cleanName = sanitizeText(nameEl ? nameEl.value : '', 80);
+        const cleanPhone = sanitizeText(phoneEl ? phoneEl.value : '', 16).replace(/[^0-9+]/g, '');
+        const cleanAddress = sanitizeText(addressEl ? addressEl.value : '', 250);
+        const cleanPayment = sanitizeText(paymentEl ? paymentEl.value : 'Transfer Bank', 60);
+
+        let valid = true;
+
+        if (cleanName.length < 2) {
+          if (errName) {
+            errName.textContent = 'Nama lengkap minimal 2 karakter.';
+            errName.classList.remove('hidden');
+          }
+          valid = false;
+        } else if (errName) {
+          errName.classList.add('hidden');
+        }
+
+        if (cleanPhone.length < 9) {
+          if (errPhone) {
+            errPhone.textContent = 'Masukkan nomor WhatsApp/HP yang valid (9–15 digit).';
+            errPhone.classList.remove('hidden');
+          }
+          valid = false;
+        } else if (errPhone) {
+          errPhone.classList.add('hidden');
+        }
+
+        if (cleanAddress.length < 10) {
+          if (errAddress) {
+            errAddress.textContent = 'Alamat pengiriman minimal 10 karakter.';
+            errAddress.classList.remove('hidden');
+          }
+          valid = false;
+        } else if (errAddress) {
+          errAddress.classList.add('hidden');
+        }
+
+        if (!valid) {
+          showToast('Mohon lengkapi data pengiriman dengan benar.', 'error');
+          return;
+        }
+
+        const totals = calculateTotals();
+        const orderNumber = 'GLW-' + Math.floor(100000 + Math.random() * 900000);
+        const purchasedItems = state.cart.map((item) => {
+          const p = BEAUTY_PRODUCTS.find((prod) => prod.id === item.productId);
+          return {
+            name: p ? p.name : 'Produk GLOWÉ',
+            qty: item.qty,
+            subtotal: p ? p.price * item.qty : 0
+          };
+        });
+
+        state.lastOrderReceipt = {
+          orderId: orderNumber,
+          name: cleanName,
+          phone: cleanPhone,
+          address: cleanAddress,
+          payment: cleanPayment,
+          items: purchasedItems,
+          grandTotal: totals.grandTotal
+        };
+
+        // Render Receipt Modal Safely via textContent
+        const rOrderId = document.getElementById('receipt-order-id');
+        const rName = document.getElementById('receipt-name');
+        const rPhone = document.getElementById('receipt-phone');
+        const rAddress = document.getElementById('receipt-address');
+        const rPayment = document.getElementById('receipt-payment');
+        const rItemsList = document.getElementById('receipt-items-list');
+        const rTotal = document.getElementById('receipt-total');
+
+        if (rOrderId) rOrderId.textContent = orderNumber;
+        if (rName) rName.textContent = cleanName;
+        if (rPhone) rPhone.textContent = cleanPhone;
+        if (rAddress) rAddress.textContent = cleanAddress;
+        if (rPayment) rPayment.textContent = cleanPayment;
+        if (rTotal) rTotal.textContent = formatRupiah(totals.grandTotal);
+
+        if (rItemsList) {
+          while (rItemsList.firstChild) {
+            rItemsList.removeChild(rItemsList.firstChild);
+          }
+          purchasedItems.forEach((pi) => {
+            const li = createEl('li', 'flex justify-between gap-2');
+            const left = createEl('span', '', pi.qty + 'x ' + pi.name);
+            const right = createEl('span', '', formatRupiah(pi.subtotal));
+            li.appendChild(left);
+            li.appendChild(right);
+            rItemsList.appendChild(li);
+          });
+        }
+
+        // Kosongkan keranjang setelah pesanan dibuat
+        state.cart = [];
+        state.promoApplied = false;
+        saveCart();
+        renderCartUI();
+        closeCartDrawer();
+
+        const successModal = document.getElementById('order-success-modal');
+        if (successModal) {
+          successModal.classList.remove('hidden');
+          successModal.classList.add('flex');
+        }
+      }
+
+      function handleSendReceiptToWhatsApp() {
+        const receipt = state.lastOrderReceipt;
+        if (!receipt) return;
+
+        const lines = receipt.items.map(
+          (item, i) => (i + 1) + '. ' + item.name + ' (' + item.qty + 'x) - ' + formatRupiah(item.subtotal)
+        );
+
+        const message = [
+          'Halo *GLOWÉ BEAUTY*! Saya telah melakukan pemesanan:',
+          '',
+          '*No. Pesanan:* ' + receipt.orderId,
+          '*Nama:* ' + receipt.name,
+          '*No. HP:* ' + receipt.phone,
+          '*Alamat:* ' + receipt.address,
+          '*Metode Bayar:* ' + receipt.payment,
+          '',
+          '*Rincian Produk:*',
+          lines.join('\n'),
+          '',
+          '*Total Pembayaran:* ' + formatRupiah(receipt.grandTotal),
+          '',
+          'Mohon konfirmasi proses pengiriman pesanan saya. Terima kasih!'
+        ].join('\n');
+
+        const url = 'https://wa.me/' + WHATSAPP_ADMIN_PHONE + '?text=' + encodeURIComponent(message);
+        const popup = window.open(url, '_blank', 'noopener,noreferrer');
+        if (!popup) window.location.href = url;
+      }
+
+      /**
+       * Skin Type Finder Interactive Quiz Logic
+       */
+      function renderQuizStage() {
+        const progressHeader = document.getElementById('quiz-progress-header');
+        const questionStage = document.getElementById('quiz-question-stage');
+        const resultStage = document.getElementById('quiz-result-stage');
+        const stepLabel = document.getElementById('quiz-step-label');
+        const stepPercent = document.getElementById('quiz-step-percent');
+        const progressBar = document.getElementById('quiz-progress-bar');
+        const questionTitle = document.getElementById('quiz-question-title');
+        const optionsContainer = document.getElementById('quiz-options-container');
+        const prevBtn = document.getElementById('btn-quiz-prev');
+
+        if (!questionStage || !resultStage || !optionsContainer || !questionTitle) return;
+
+        if (state.quizStep >= SKIN_QUIZ_QUESTIONS.length) {
+          // Tampilkan Hasil Analisis
+          if (progressHeader) progressHeader.classList.add('hidden');
+          questionStage.classList.add('hidden');
+          resultStage.classList.remove('hidden');
+
+          // Hitung jenis kulit dominan
+          const counts = { Kering: 0, Berminyak: 0, Kombinasi: 0, Sensitif: 0 };
+          state.quizAnswers.forEach((ans) => {
+            if (ans && Object.prototype.hasOwnProperty.call(counts, ans)) {
+              counts[ans] += 1;
+            }
+          });
+
+          let detectedType = 'Kombinasi';
+          let maxScore = -1;
+          Object.keys(counts).forEach((typeKey) => {
+            if (counts[typeKey] > maxScore) {
+              maxScore = counts[typeKey];
+              detectedType = typeKey;
+            }
+          });
+
+          const profile = SKIN_PROFILES[detectedType] || SKIN_PROFILES.Kombinasi;
+          const resTypeEl = document.getElementById('quiz-result-type');
+          const resDescEl = document.getElementById('quiz-result-desc');
+          const recGrid = document.getElementById('quiz-recommendations-grid');
+
+          if (resTypeEl) resTypeEl.textContent = profile.title;
+          if (resDescEl) resDescEl.textContent = profile.description;
+
+          if (recGrid) {
+            while (recGrid.firstChild) {
+              recGrid.removeChild(recGrid.firstChild);
+            }
+
+            const recommendedProducts = BEAUTY_PRODUCTS.filter((p) =>
+              p.skinTypes.includes(detectedType)
+            ).slice(0, 4);
+
+            recommendedProducts.forEach((prod) => {
+              const recCard = createEl(
+                'div',
+                'bg-cream-soft rounded-2xl p-3.5 border border-blush-deep flex items-center gap-3.5'
+              );
+
+              const img = document.createElement('img');
+              img.src = prod.image;
+              img.alt = prod.name;
+              img.className = 'w-16 h-16 rounded-xl object-cover shrink-0 bg-white';
+              img.onerror = function () {
+                this.src = 'https://placehold.co/120x120/F8E5EA/B76E79?text=GLOWE';
+              };
+
+              const meta = createEl('div', 'flex-1 min-w-0');
+              const cat = createEl('span', 'text-[10px] font-bold uppercase text-rosegold block', prod.category);
+              const name = createEl('h5', 'font-serif font-bold text-base text-velvet truncate', prod.name);
+              const price = createEl('p', 'text-xs font-bold text-velvet-muted', formatRupiah(prod.price));
+
+              meta.appendChild(cat);
+              meta.appendChild(name);
+              meta.appendChild(price);
+
+              const addBtn = createEl(
+                'button',
+                'px-3.5 py-2.5 rounded-xl bg-rosegold-gradient text-white text-xs font-bold shrink-0 hover:opacity-95 transition-opacity min-h-[42px]',
+                '+ Tas'
+              );
+              addBtn.type = 'button';
+              addBtn.addEventListener('click', () => addToCart(prod.id, 1));
+
+              recCard.appendChild(img);
+              recCard.appendChild(meta);
+              recCard.appendChild(addBtn);
+              recGrid.appendChild(recCard);
+            });
+          }
+          return;
+        }
+
+        // Tampilkan Pertanyaan Aktif
+        if (progressHeader) progressHeader.classList.remove('hidden');
+        questionStage.classList.remove('hidden');
+        resultStage.classList.add('hidden');
+
+        const currentQ = SKIN_QUIZ_QUESTIONS[state.quizStep];
+        const pct = Math.round(((state.quizStep + 1) / SKIN_QUIZ_QUESTIONS.length) * 100);
+
+        if (stepLabel) stepLabel.textContent = 'Langkah ' + (state.quizStep + 1) + ' dari ' + SKIN_QUIZ_QUESTIONS.length;
+        if (stepPercent) stepPercent.textContent = pct + '%';
+        if (progressBar) progressBar.style.width = pct + '%';
+        questionTitle.textContent = currentQ.question;
+
+        if (prevBtn) {
+          if (state.quizStep > 0) {
+            prevBtn.classList.remove('hidden');
+          } else {
+            prevBtn.classList.add('hidden');
+          }
+        }
+
+        while (optionsContainer.firstChild) {
+          optionsContainer.removeChild(optionsContainer.firstChild);
+        }
+
+        currentQ.options.forEach((opt) => {
+          const isSelected = state.quizAnswers[state.quizStep] === opt.scoreType;
+          const btn = createEl(
+            'button',
+            'text-left p-4 rounded-2xl border-2 transition-all min-h-[64px] flex items-center gap-3 ' +
+              (isSelected
+                ? 'bg-blush border-rosegold text-velvet font-bold shadow-xs'
+                : 'bg-cream-soft hover:bg-blush-light border-blush-deep/70 text-velvet font-medium')
+          );
+          btn.type = 'button';
+
+          const bullet = createEl(
+            'span',
+            'w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ' +
+              (isSelected ? 'border-rosegold bg-rosegold' : 'border-dusty')
+          );
+          if (isSelected) {
+            const innerDot = createEl('span', 'w-2 h-2 rounded-full bg-white');
+            bullet.appendChild(innerDot);
+          }
+
+          const textSpan = createEl('span', 'text-xs sm:text-sm leading-snug', opt.label);
+
+          btn.appendChild(bullet);
+          btn.appendChild(textSpan);
+
+          btn.addEventListener('click', () => {
+            state.quizAnswers[state.quizStep] = opt.scoreType;
+            state.quizStep += 1;
+            renderQuizStage();
+          });
+
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      /**
+       * Product Detail Modal Controls
+       */
+      function updateDetailModalWishlistButton(productId) {
+        const label = document.getElementById('detail-wishlist-label');
+        if (!label) return;
+        const wished = state.wishlist.includes(productId);
+        label.textContent = wished ? 'Tersimpan di Wishlist' : 'Simpan ke Wishlist';
+      }
+
+      function openProductDetailModal(productId) {
+        const product = BEAUTY_PRODUCTS.find((p) => p.id === productId);
+        if (!product) return;
+
+        state.activeDetailProductId = product.id;
+
+        const modal = document.getElementById('product-detail-modal');
+        const img = document.getElementById('detail-modal-img');
+        const cat = document.getElementById('detail-modal-category');
+        const skin = document.getElementById('detail-modal-skin');
+        const sub = document.getElementById('detail-modal-subtitle');
+        const title = document.getElementById('detail-modal-title');
+        const price = document.getElementById('detail-modal-price');
+        const size = document.getElementById('detail-modal-size');
+        const desc = document.getElementById('detail-modal-desc');
+        const ing = document.getElementById('detail-modal-ingredients');
+        const howto = document.getElementById('detail-modal-howto');
+
+        if (img) {
+          img.src = product.image;
+          img.alt = product.name;
+          img.onerror = function () {
+            this.src = 'https://placehold.co/600x600/F8E5EA/B76E79?text=' + encodeURIComponent(product.name);
+          };
+        }
+        if (cat) cat.textContent = product.category;
+        if (skin) skin.textContent = 'Kulit: ' + product.skinTypes.join(', ');
+        if (sub) sub.textContent = product.subtitle;
+        if (title) title.textContent = product.name;
+        if (price) price.textContent = formatRupiah(product.price);
+        if (size) size.textContent = '• Netto ' + product.size;
+        if (desc) desc.textContent = product.description;
+        if (ing) ing.textContent = product.ingredients;
+        if (howto) howto.textContent = product.howToUse;
+
+        updateDetailModalWishlistButton(product.id);
+
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        }
+      }
+
+      function closeProductDetailModal() {
+        const modal = document.getElementById('product-detail-modal');
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+        state.activeDetailProductId = null;
+      }
+
+      /**
+       * Drawers & Modals Open/Close Helpers
+       */
+      function openDrawer(overlayId, backdropId, panelId) {
+        const overlay = document.getElementById(overlayId);
+        const backdrop = document.getElementById(backdropId);
+        const panel = document.getElementById(panelId);
+        if (!overlay || !backdrop || !panel) return;
+        overlay.classList.remove('hidden');
+        window.requestAnimationFrame(() => {
+          backdrop.classList.remove('opacity-0');
+          panel.classList.remove('translate-x-full');
+        });
+      }
+
+      function closeDrawer(overlayId, backdropId, panelId) {
+        const overlay = document.getElementById(overlayId);
+        const backdrop = document.getElementById(backdropId);
+        const panel = document.getElementById(panelId);
+        if (!overlay || !backdrop || !panel) return;
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
+        window.setTimeout(() => {
+          overlay.classList.add('hidden');
+        }, 290);
+      }
+
+      function openCartDrawer() {
+        openDrawer('cart-drawer-overlay', 'cart-drawer-backdrop', 'cart-drawer-panel');
+      }
+
+      function closeCartDrawer() {
+        closeDrawer('cart-drawer-overlay', 'cart-drawer-backdrop', 'cart-drawer-panel');
+      }
+
+      function openWishlistDrawer() {
+        openDrawer('wishlist-drawer-overlay', 'wishlist-drawer-backdrop', 'wishlist-drawer-panel');
+      }
+
+      function closeWishlistDrawer() {
+        closeDrawer('wishlist-drawer-overlay', 'wishlist-drawer-backdrop', 'wishlist-drawer-panel');
+      }
+
+      function openMobileNav() {
+        openDrawer('mobile-nav-overlay', 'mobile-nav-backdrop', 'mobile-nav-panel');
+        const trigger = document.getElementById('btn-open-mobile-nav');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeMobileNav() {
+        closeDrawer('mobile-nav-overlay', 'mobile-nav-backdrop', 'mobile-nav-panel');
+        const trigger = document.getElementById('btn-open-mobile-nav');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      /**
+       * Event Listeners Binding
+       */
+      function bindEvents() {
+        // Quick Search Button -> Scroll ke Katalog & Fokus Input Pencarian
+        const quickSearchBtn = document.getElementById('btn-quick-search');
+        const searchInput = document.getElementById('catalog-search-input');
+        const clearSearchBtn = document.getElementById('btn-clear-search');
+
+        if (quickSearchBtn && searchInput) {
+          quickSearchBtn.addEventListener('click', () => {
+            const katalogSection = document.getElementById('katalog');
+            if (katalogSection) katalogSection.scrollIntoView({ behavior: 'smooth' });
+            window.setTimeout(() => searchInput.focus(), 350);
+          });
+        }
+
+        if (searchInput && clearSearchBtn) {
+          searchInput.addEventListener('input', (e) => {
+            state.searchQuery = sanitizeText(e.target.value, 60);
+            if (state.searchQuery.length > 0) {
+              clearSearchBtn.classList.remove('hidden');
+              clearSearchBtn.classList.add('flex');
+            } else {
+              clearSearchBtn.classList.add('hidden');
+              clearSearchBtn.classList.remove('flex');
+            }
+            renderCatalog();
+          });
+
+          clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            state.searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            clearSearchBtn.classList.remove('flex');
+            renderCatalog();
+            searchInput.focus();
+          });
+        }
+
+        // Skin Filter & Sort Select
+        const skinSelect = document.getElementById('filter-skin-select');
+        const sortSelect = document.getElementById('sort-price-select');
+
+        if (skinSelect) {
+          skinSelect.addEventListener('change', (e) => {
+            state.selectedSkinType = e.target.value;
+            renderCatalog();
+          });
+        }
+
+        if (sortSelect) {
+          sortSelect.addEventListener('change', (e) => {
+            state.sortOption = e.target.value;
+            renderCatalog();
+          });
+        }
+
+        // Category Tabs
+        const catBtns = document.querySelectorAll('.cat-tab-btn');
+        catBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const chosen = btn.getAttribute('data-cat') || 'Semua';
+            state.selectedCategory = chosen;
+            catBtns.forEach((b) => {
+              const active = b.getAttribute('data-cat') === chosen;
+              b.className = active
+                ? 'cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-rosegold-gradient text-white shadow-xs transition-all min-h-[42px]'
+                : 'cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream-soft text-velvet hover:bg-blush transition-all min-h-[42px]';
+            });
+            renderCatalog();
+          });
+        });
+
+        // Reset Catalog Button
+        const resetCatBtn = document.getElementById('btn-reset-catalog');
+        if (resetCatBtn) {
+          resetCatBtn.addEventListener('click', () => {
+            state.selectedCategory = 'Semua';
+            state.selectedSkinType = 'Semua Kulit';
+            state.sortOption = 'featured';
+            state.searchQuery = '';
+            if (searchInput) searchInput.value = '';
+            if (clearSearchBtn) {
+              clearSearchBtn.classList.add('hidden');
+              clearSearchBtn.classList.remove('flex');
+            }
+            if (skinSelect) skinSelect.value = 'Semua Kulit';
+            if (sortSelect) sortSelect.value = 'featured';
+            catBtns.forEach((b) => {
+              const isAll = b.getAttribute('data-cat') === 'Semua';
+              b.className = isAll
+                ? 'cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-rosegold-gradient text-white shadow-xs transition-all min-h-[42px]'
+                : 'cat-tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-cream-soft text-velvet hover:bg-blush transition-all min-h-[42px]';
+            });
+            renderCatalog();
+          });
+        }
+
+        // Quiz Controls
+        const quizPrevBtn = document.getElementById('btn-quiz-prev');
+        const quizRestartBtn = document.getElementById('btn-quiz-restart');
+        if (quizPrevBtn) {
+          quizPrevBtn.addEventListener('click', () => {
+            if (state.quizStep > 0) {
+              state.quizStep -= 1;
+              renderQuizStage();
+            }
+          });
+        }
+        if (quizRestartBtn) {
+          quizRestartBtn.addEventListener('click', () => {
+            state.quizStep = 0;
+            state.quizAnswers = [null, null, null];
+            renderQuizStage();
+          });
+        }
+
+        // Product Detail Modal Controls
+        const closeDetailBtn = document.getElementById('btn-close-detail-modal');
+        const detailBackdrop = document.getElementById('detail-modal-backdrop');
+        const detailWishBtn = document.getElementById('btn-detail-toggle-wishlist');
+        const detailCartBtn = document.getElementById('btn-detail-add-cart');
+
+        if (closeDetailBtn) closeDetailBtn.addEventListener('click', closeProductDetailModal);
+        if (detailBackdrop) detailBackdrop.addEventListener('click', closeProductDetailModal);
+        if (detailWishBtn) {
+          detailWishBtn.addEventListener('click', () => {
+            if (state.activeDetailProductId) toggleWishlist(state.activeDetailProductId);
+          });
+        }
+        if (detailCartBtn) {
+          detailCartBtn.addEventListener('click', () => {
+            if (state.activeDetailProductId) {
+              addToCart(state.activeDetailProductId, 1);
+              closeProductDetailModal();
+            }
+          });
+        }
+
+        // Wishlist Drawer Controls
+        const openWishBtn = document.getElementById('btn-open-wishlist');
+        const closeWishBtn = document.getElementById('btn-close-wishlist');
+        const wishBackdrop = document.getElementById('wishlist-drawer-backdrop');
+        if (openWishBtn) openWishBtn.addEventListener('click', openWishlistDrawer);
+        if (closeWishBtn) closeWishBtn.addEventListener('click', closeWishlistDrawer);
+        if (wishBackdrop) wishBackdrop.addEventListener('click', closeWishlistDrawer);
+
+        // Cart Drawer & Checkout Controls
+        const openCartBtn = document.getElementById('btn-open-cart');
+        const closeCartBtn = document.getElementById('btn-close-cart');
+        const cartBackdrop = document.getElementById('cart-drawer-backdrop');
+        const cartBrowseBtn = document.getElementById('btn-cart-browse');
+        const applyPromoBtn = document.getElementById('btn-apply-promo');
+        const submitCheckoutBtn = document.getElementById('btn-submit-checkout');
+
+        if (openCartBtn) openCartBtn.addEventListener('click', openCartDrawer);
+        if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartDrawer);
+        if (cartBackdrop) cartBackdrop.addEventListener('click', closeCartDrawer);
+        if (cartBrowseBtn) {
+          cartBrowseBtn.addEventListener('click', () => {
+            closeCartDrawer();
+            const katalog = document.getElementById('katalog');
+            if (katalog) katalog.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
+        if (applyPromoBtn) applyPromoBtn.addEventListener('click', handleApplyPromo);
+        if (submitCheckoutBtn) submitCheckoutBtn.addEventListener('click', handleCheckoutSubmit);
+
+        // Custom Confirm Clear Cart Modal
+        const clearCartBtn = document.getElementById('btn-clear-cart');
+        const confirmModal = document.getElementById('custom-confirm-modal');
+        const confirmBackdrop = document.getElementById('custom-confirm-backdrop');
+        const confirmNoBtn = document.getElementById('btn-confirm-no');
+        const confirmYesBtn = document.getElementById('btn-confirm-yes');
+
+        function closeConfirm() {
+          if (confirmModal) {
+            confirmModal.classList.add('hidden');
+            confirmModal.classList.remove('flex');
+          }
+        }
+
+        if (clearCartBtn && confirmModal) {
+          clearCartBtn.addEventListener('click', () => {
+            confirmModal.classList.remove('hidden');
+            confirmModal.classList.add('flex');
+          });
+        }
+        if (confirmBackdrop) confirmBackdrop.addEventListener('click', closeConfirm);
+        if (confirmNoBtn) confirmNoBtn.addEventListener('click', closeConfirm);
+        if (confirmYesBtn) {
+          confirmYesBtn.addEventListener('click', () => {
+            clearCart();
+            closeConfirm();
+          });
+        }
+
+        // Order Success Modal Controls
+        const successModal = document.getElementById('order-success-modal');
+        const successBackdrop = document.getElementById('order-success-backdrop');
+        const closeSuccessBtn = document.getElementById('btn-close-success-modal');
+        const sendReceiptWaBtn = document.getElementById('btn-send-receipt-wa');
+
+        function closeSuccessModal() {
+          if (successModal) {
+            successModal.classList.add('hidden');
+            successModal.classList.remove('flex');
+          }
+        }
+
+        if (successBackdrop) successBackdrop.addEventListener('click', closeSuccessModal);
+        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeSuccessModal);
+        if (sendReceiptWaBtn) sendReceiptWaBtn.addEventListener('click', handleSendReceiptToWhatsApp);
+
+        // Mobile Navigation Drawer Controls
+        const openMobBtn = document.getElementById('btn-open-mobile-nav');
+        const closeMobBtn = document.getElementById('btn-close-mobile-nav');
+        const mobBackdrop = document.getElementById('mobile-nav-backdrop');
+        const mobItems = document.querySelectorAll('.mobile-nav-item');
+
+        if (openMobBtn) openMobBtn.addEventListener('click', openMobileNav);
+        if (closeMobBtn) closeMobBtn.addEventListener('click', closeMobileNav);
+        if (mobBackdrop) mobBackdrop.addEventListener('click', closeMobileNav);
+        mobItems.forEach((link) => link.addEventListener('click', closeMobileNav));
+
+        // ESC Key to Close Overlays
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeProductDetailModal();
+            closeCartDrawer();
+            closeWishlistDrawer();
+            closeMobileNav();
+            closeConfirm();
+            closeSuccessModal();
+          }
+        });
+      }
+
+      /**
+       * App Bootstrap
+       */
+      function initApp() {
+        const yearSpan = document.getElementById('footer-year');
+        if (yearSpan) yearSpan.textContent = String(new Date().getFullYear());
+
+        state.cart = loadStoredCart();
+        state.wishlist = loadStoredWishlist();
+
+        renderCatalog();
+        renderQuizStage();
+        renderWishlistUI();
+        renderCartUI();
+        bindEvents();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+      } else {
+        initApp();
+      }
+    })();
+  </script>
+</body>
+</html>
